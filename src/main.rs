@@ -1,38 +1,8 @@
-use std::env;
-use log::{info, warn, error, debug};
-use anyhow::Result;
-use clap::Parser;
-use keyring::keyring;
-
-#[derive(Parser)]
-struct Cli {
-    #[arg(short, long)]
-    auto: bool,
-}
-
-fn main() -> Result<()> { -> Result<()> {
-    let cli = Cli::parse();
-    let config = keyring::Config { auto_start: cli.auto, ..Default::default() };
-    let mut component = keyring::new(config);
-    
-    component.initialize()?;
-    component.run()?;
-    
-    println!("SigmaOS-keyring operational");
-    Ok(())
-}
-
-#[derive(Debug, Clone)]
-struct Config {
-    verbose: bool,
-    dry_run: bool,
-}
-
-impl Config {
-    fn from_env() -> Self {
-        Config {
-            verbose: env::var("VERBOSE").is_ok(),
-            dry_run: env::var("DRY_RUN").is_ok(),
-        }
-    }
+use sigmaos_keyring::{Config, KeyringComponent, Component};
+fn main() {
+    env_logger::init();
+    let mut c = KeyringComponent::new(Config::default());
+    if let Err(e) = c.initialize() { eprintln!("Failed: {}", e); std::process::exit(1); }
+    println!("SigmaOS keyring running");
+    let _ = c.shutdown();
 }
