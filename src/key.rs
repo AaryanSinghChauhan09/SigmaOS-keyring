@@ -98,7 +98,7 @@ mod tests {
         let mut fp = [0u8; 20];
         fp[0] = 0xDE;
         fp[19] = 0xAD;
-        let key = Key::new(KeyId(4), fp, "dave", TrustLevel::Unknown, None);
+        let key = Key::new(KeyId(4), fp, "dave", TrustLevel::Untrusted, None);
         // Act
         let hex = key.fingerprint_hex();
         // Assert

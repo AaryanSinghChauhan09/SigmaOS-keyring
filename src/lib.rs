@@ -27,3 +27,4 @@ impl Component for KeyringComponent {
         else { Err(error::ComponentError::Service("keyring not running".to_string())) }
     }
 }
+pub mod key;
