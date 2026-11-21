@@ -1,10 +1,14 @@
 [package]
-name = "sigmaos_keyring"
+name = "SigmaOS-keyring"
 version = "0.1.0"
 edition = "2021"
-license = "MIT"
-description = "SigmaOS keyring component inspired by Linux Mint / Omarchy / Arch Linux."
+license = "Apache-2.0"
+description = "SigmaOS sigmaos-keyring-manager component"
 
 [lib]
 name = "sigmaos_keyring"
 path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

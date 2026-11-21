@@ -1,9 +1,9 @@
 # SigmaOS-keyring
 
-No GitHub description is set; component scope remains unclassified.
+Keyring Manager for SigmaOS inspired by SigmaOS Linux
 
-- **Category:** User Management
-- **Engine:** user_management
+- **Category:** Utilities
+- **Engine:** keyring_manager
 - **Language:** Rust
 
 ## Build & Test
